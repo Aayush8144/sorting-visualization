@@ -19,7 +19,8 @@
 
 const float WINDOW_LENGTH = 1000;
 const float WINDOW_HEIGHT = 1000;
-const int NUM_SIZE = 10000;
+const int NUM_SIZE = 100;
+const sf::Vector2f GRAPH_00 = sf::Vector2f(WINDOW_LENGTH / 1.5, WINDOW_HEIGHT / 1.5);
 
 /** PrintArray is an utility funtion to print the array
     @param num: passes the array
@@ -30,7 +31,7 @@ void PrintArray(int*, int);
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "SFML works!");
-    GraphElement shape(77, WINDOW_LENGTH / NUM_SIZE, 5, 10);
+    //GraphElement shape(11.0, WINDOW_LENGTH / NUM_SIZE, 5, 10);
     // shape.setFillColor(sf::Color::Green);
 
 
@@ -40,8 +41,8 @@ int main()
     // generating random array and assigning it to graph
     for (int i = 0; i < NUM_SIZE; ++i)
     {
-        num[i] = rand() % 100;
-        elementList[i] = new GraphElement(num[i], WINDOW_LENGTH/NUM_SIZE, i, 10);
+        num[i] = rand() % (static_cast<int>(GRAPH_00.y)-10);
+        elementList[i] = new GraphElement(num[i], WINDOW_LENGTH / NUM_SIZE, i, GRAPH_00.y);
     }
 
     while (window.isOpen())
