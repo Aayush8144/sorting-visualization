@@ -26,11 +26,14 @@ public:
 	// returns body position
 	sf::Vector2f GetPosition() { return body.getPosition(); }
 
+	// sets position
+	void SetPosition(float x, float y) { body.setPosition(sf::Vector2f(x, y)); }
+
 	// returns body Size
 	sf::Vector2f GetSize() { return body.getSize(); }
-
-	// sets position
-	void SetPosition(float x, float y) { body.setPosition(x, y); }
+	
+	// sets size
+	void SetSize(float x, float y) { body.setSize(sf::Vector2f(x, y)); }
 
 	/*
 		Update member function updates the current position
@@ -40,6 +43,7 @@ public:
 
 	/*
 		Draw member function draws the body onto the screen
+		@param &window: passes the window as reference
 	*/
 	void Draw(sf::RenderWindow& window);
 

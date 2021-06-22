@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include <stdlib.h> // for rand
 
 #include "GraphElement.h"
@@ -35,14 +36,14 @@ int main()
     // shape.setFillColor(sf::Color::Green);
 
 
-    GraphElement* elementList[NUM_SIZE];
-    int num[NUM_SIZE];
+    int num[NUM_SIZE]; // array to be sorted
+    std::vector<GraphElement> graphElementList;    // represents array as graph 
 
     // generating random array and assigning it to graph
     for (int i = 0; i < NUM_SIZE; ++i)
     {
         num[i] = rand() % (static_cast<int>(GRAPH_00.y)-10);
-        elementList[i] = new GraphElement(num[i], WINDOW_LENGTH / NUM_SIZE, i, GRAPH_00.y);
+        graphElementList.push_back(GraphElement(num[i], WINDOW_LENGTH / NUM_SIZE, i, GRAPH_00.y));
     }
 
     while (window.isOpen())
@@ -56,22 +57,18 @@ int main()
 
         window.clear();
         
+        /*
         // drawing graph elemet to screen
         for (int i = 0; i < NUM_SIZE; ++i)
         {
            elementList[i]->Draw(window);
         }
+        */
+        SelectionSortGraph(graphElementList, NUM_SIZE, window);
         
         //shape.Draw(window);
         window.display();
     }
-
-    // dynamically disallocating element list
-    for (int i = 0; i < NUM_SIZE; ++i)
-    {
-        delete elementList[i];
-    }
-
     return 0;
 }
 
