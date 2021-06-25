@@ -1,6 +1,7 @@
 #include "selection_sort.h"
 
-void SelectionSortGraph(std::vector<GraphElement>& GraphList, const int numSize, sf::RenderWindow& window)
+
+void SelectionSortGraph(std::vector<GraphElement>& graphList, const int numSize, sf::RenderWindow& window)
 {
     // implementing selection sort
     // stores the index of smallest num in unsorted part of the list
@@ -16,18 +17,22 @@ void SelectionSortGraph(std::vector<GraphElement>& GraphList, const int numSize,
         {
             // compairing the elemet at j with the smallestNumIndex
             // if element at j is small updating the smallestNumIndex
-            smallestNumIndex = (GraphList.at(j).GetSize().y < GraphList.at(smallestNumIndex).GetSize().y) ? j : smallestNumIndex;
+            smallestNumIndex = (graphList.at(j).GetSize().y < graphList.at(smallestNumIndex).GetSize().y) ? j : smallestNumIndex;
         }
 
-        // swap element at smallestNumIndex with element at i
-        float temp = GraphList.at(smallestNumIndex).GetSize().y; // hold a temp value for swapping
-        GraphList.at(smallestNumIndex).SetSize(GraphList.at(smallestNumIndex).GetSize().x, GraphList.at(i).GetSize().y);
-        GraphList.at(i).SetSize(GraphList.at(smallestNumIndex).GetSize().x, temp);
+        GraphElement temp = graphList.at(i); 
+        graphList.at(i) = graphList.at(smallestNumIndex);
+        graphList.at(smallestNumIndex) = temp;
+
+        // updating index
+        graphList.at(i).SetIndex(i);
+        graphList.at(smallestNumIndex).SetIndex(smallestNumIndex);
 
         // drawing the graph
-        DrawGraph(GraphList, numSize, window);
-
+        DrawGraph(graphList, numSize, window);
+        
     }
+    return;
 }
 
 /** selection_sort.cpp : This file contains the 'SelectionSort' function.
@@ -61,10 +66,11 @@ void SelectionSort(int* num, const int numSize)
 
 void DrawGraph(std::vector<GraphElement>& GraphList, const int numSize, sf::RenderWindow& window)
 {
+    window.clear();
     // drawing graph elemet to screen
     for (int i = 0; i < numSize; ++i)
     {
-        GraphList[i].Draw(window);
-        
+        GraphList.at(i).Draw(window);
     }
+    window.display();
 }

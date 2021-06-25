@@ -1,2 +1,15 @@
-﻿  selection_sort.cpp
+﻿  mian.cpp
+F:\Projects\c_plus_plus\sorting_algorithms\sorting_algorithms\GraphElement.h(53,53): warning C4244: 'return': conversion from 'const T' to 'const int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Projects\c_plus_plus\sorting_algorithms\sorting_algorithms\mian.cpp(24,82): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+F:\Projects\c_plus_plus\sorting_algorithms\sorting_algorithms\mian.cpp(34,58): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+F:\Projects\c_plus_plus\sorting_algorithms\sorting_algorithms\mian.cpp(34,43): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+F:\Projects\c_plus_plus\sorting_algorithms\sorting_algorithms\mian.cpp(43,54): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
   sorting_algorithms.vcxproj -> F:\Projects\c_plus_plus\sorting_algorithms\Debug\sorting_algorithms.exe

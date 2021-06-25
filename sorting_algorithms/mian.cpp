@@ -20,8 +20,8 @@
 
 const float WINDOW_LENGTH = 1000;
 const float WINDOW_HEIGHT = 1000;
-const int NUM_SIZE = 100;
-const sf::Vector2f GRAPH_00 = sf::Vector2f(WINDOW_LENGTH / 1.5, WINDOW_HEIGHT / 1.5);
+const int NUM_SIZE = 1500;
+const sf::Vector2f GRAPH_00 = sf::Vector2f(WINDOW_LENGTH / 1.5, WINDOW_HEIGHT / 2);
 
 /** PrintArray is an utility funtion to print the array
     @param num: passes the array
@@ -32,9 +32,6 @@ void PrintArray(int*, int);
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "SFML works!");
-    //GraphElement shape(11.0, WINDOW_LENGTH / NUM_SIZE, 5, 10);
-    // shape.setFillColor(sf::Color::Green);
-
 
     int num[NUM_SIZE]; // array to be sorted
     std::vector<GraphElement> graphElementList;    // represents array as graph 
@@ -42,7 +39,7 @@ int main()
     // generating random array and assigning it to graph
     for (int i = 0; i < NUM_SIZE; ++i)
     {
-        num[i] = rand() % (static_cast<int>(GRAPH_00.y)-10);
+        num[i] = rand() % (static_cast<int>(GRAPH_00.y / 1.1));
         graphElementList.push_back(GraphElement(num[i], WINDOW_LENGTH / NUM_SIZE, i, GRAPH_00.y));
     }
 
@@ -53,22 +50,23 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
         }
+        
+        window.clear();
+
+        // implementing selection sort
+        SelectionSortGraph(graphElementList, NUM_SIZE, window);
 
         window.clear();
         
-        /*
-        // drawing graph elemet to screen
-        for (int i = 0; i < NUM_SIZE; ++i)
-        {
-           elementList[i]->Draw(window);
-        }
-        */
-        SelectionSortGraph(graphElementList, NUM_SIZE, window);
-        
-        //shape.Draw(window);
-        window.display();
     }
+    for (int i = 0; i < NUM_SIZE; ++i)
+    {
+        std::cout << graphElementList.at(i).GetLength() << std::endl;
+    }
+
+
     return 0;
 }
 

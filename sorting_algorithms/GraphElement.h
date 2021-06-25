@@ -10,7 +10,9 @@
 class GraphElement
 {
 public:
-	
+	// default constructure
+	GraphElement();
+
 	/*
 		constructor for element class
 		@param const length: this is length of the rectangle which represent the integer
@@ -19,27 +21,41 @@ public:
 		@param cosnt currYPosition: base of the graph
 	*/
 	GraphElement(const float height, const float width, int index, const float currYPosition);
-
+	
 	// deconstructure
 	~GraphElement();
 
-	// returns body position
-	sf::Vector2f GetPosition() { return body.getPosition(); }
+	// copy Constructure
+	GraphElement(const GraphElement &newElement);
+
+	// assignment Constructure
+	GraphElement& operator = (const GraphElement &newElement);
 
 	// sets position
 	void SetPosition(float x, float y) { body.setPosition(sf::Vector2f(x, y)); }
 
-	// returns body Size
-	sf::Vector2f GetSize() { return body.getSize(); }
-	
+	// returns body position
+	const sf::Vector2f GetPosition() { return body.getPosition(); }
+
 	// sets size
 	void SetSize(float x, float y) { body.setSize(sf::Vector2f(x, y)); }
 
+	// returns body Size
+	const sf::Vector2f GetSize() { return body.getSize(); }
+
+	// sets index and updates Position
+	void SetIndex(int newIndex);
+
+	// gets index 
+	const int GetIndex() { return this->index; }
+	
+	// gets length 
+	const int GetLength() { return this->body.getSize().y; }
+
 	/*
-		Update member function updates the current position
-		@param newposition: new index of the element in the array after passing through the algorith
+		UpdatePosition member function updates the current position
 	*/
-	void Update(int newPosition);
+	void UpdatePosition();
 
 	/*
 		Draw member function draws the body onto the screen
@@ -49,6 +65,7 @@ public:
 
 private:
 	sf::RectangleShape body;
-
+	sf::RectangleShape originBody;
+	int index;
 };
 

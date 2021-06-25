@@ -2,7 +2,9 @@
 * selection_sort.h : This file is the header for selection sort function. 
 */
 
+#include <iostream>
 #include "GraphElement.h"
+#include <SFML/Graphics.hpp>
 
 #pragma once
 
@@ -15,7 +17,8 @@
 void SelectionSortGraph(std::vector<GraphElement> &GraphList, const int numSize, sf::RenderWindow& window);
 
 
-/** SelectionSort function implements the selection sort algorithm for 
+/** SelectionSort function implements the selection sort algorithm for each element
+    this also calls the draw function of the GraphElemnt which draws them to the screen
     array of int type
     @param num: passes the int array
     @param const numSize: size of the array passed
